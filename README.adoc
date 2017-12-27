@@ -4,39 +4,20 @@
 
 The application consists of several Microservices and a Web-Application managing a conference :
 
-* `microservice-schedule` : Schedule of the conference
-* `microservice-session` : Sessions of the conference
-* `microservice-speaker` : Speakers of the conference
-* `microservice-vote` : Votes for each session
-* `web-application` : Frontend Angular2 | Bootstrap4
+[options="header"]
+|=====
+| Microservice Name | Contributed By | Description | Technologies
+| link:/microservice-schedule/README.adoc[microservice-schedule] | https://www.payara.fish/payara_micro[Payara Micro] | Schedule of the conference | JAX-RS, CDI 
+| link:/microservice-session/README.adoc[microservice-session] | http://wildfly-swarm.io/[WildFly Swarm] | Sessions of the conference | JAX-RS, CDI, JSON-P
+| link:/microservice-speaker/readme.adoc[microservice-speaker] | http://tomee.apache.org/[Apache TomEE] | Speakers of the conference | JAX-RS, CDI, JSON
+| link:/microservice-vote/README.adoc[microservice-vote] | https://developer.ibm.com/wasdev/[WebSphere Liberty] | Votes for each session | JAX-RS, CDI, JSON-P, MP Config, MP Fault Tolerance, MP Metrics, MP Health
+| link:/web-application/readme.adoc[web-application] |  http://tomee.apache.org/[Apache TomEE] | Frontend UI | Angular2, Bootstrap4
+|=====
 
 The WebApp is a direct subscriber to the individual Microservices.
 This means that there is no aggregator / middle-man application.
 The WebApp itself provides a known relative EndPoint microservice that enables the lookup of
 URLs to the other services.
-
-The sample is a version of the MicroProfile sample application, designed to run all the services on Open Liberty.
-
-If you would like to participate in the MicroProfile community effort to advance EE then by all
-means feel free to join us on the following sites:
-
-http://microprofile.io/[Microprofile.io]
-- The community landing site.
-
-https://groups.google.com/forum/#!forum/microprofile[Google+ Microprofile groups]
-- Public discussion lists (We do not have private lists).
-
-https://waffle.io/microprofile/microprofile-conference/join[Kanban board]
-- A nice Kanban integration for our GitHub issues.
-
-https://github.com/microprofile[All source code]
-- https://www.apache.org/licenses/LICENSE-2.0[Apache Licence V2] project OSS code.
-
-== Technologies
-
-* Java
-* MicroProfile
-* JAX-RS 2.0 / JSON-P 1.0 / CDI 1.1
 
 == Quickstart - Run all services and UI in separate runtimes
 === Running with Maven

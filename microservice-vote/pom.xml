@@ -51,6 +51,14 @@
         <icon>http://microprofile.io/app/images/logo.png</icon>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>liberty-starter-maven-repo</id>
+            <name>liberty-starter-maven-repo</name>
+            <url>http://liberty-app-accelerator.wasdev.developer.ibm.com/start/api/v1/repo</url>
+        </repository>
+    </repositories>
+
     <profiles>
         <profile>
             <id>createZip</id>
@@ -132,26 +140,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.0.1</version>
+            <groupId>net.wasdev.wlp.starters.microprofile</groupId>
+            <artifactId>runtime-pom</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>pom</type>
+            <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>javax.json</groupId>
-            <artifactId>javax.json-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.websphere.appserver.api</groupId>
-            <artifactId>com.ibm.websphere.appserver.api.jaxrs20</artifactId>
-            <version>1.0.10</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.websphere.appserver.api</groupId>
-            <artifactId>com.ibm.websphere.appserver.api.json</artifactId>
-            <version>1.0.10</version>
-        </dependency>
-        <dependency>
+       <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
             <version>1.2</version>
@@ -202,6 +197,7 @@
                         <serverName>${wlpServerName}</serverName>
                         <assemblyInstallDirectory>${project.build.directory}/liberty</assemblyInstallDirectory>
                         <configFile>src/main/liberty/config/server.xml</configFile>
+                        <serverEnv>${basedir}/src/main/liberty/config/server.env</serverEnv>
                         <packageFile>${package.file}</packageFile>
                         <include>${packaging.type}</include>
                         <bootstrapProperties>

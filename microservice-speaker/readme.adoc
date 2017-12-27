@@ -1,0 +1,72 @@
+= microservice-speaker
+Provided using link:http://tomee.apache.org/[Apache TomEE 7.x]
+
+*Build and run the service*
+[source,sh]
+----
+cd microservice-speaker
+
+mvn clean package
+
+java -jar target/microservice-speaker-exec.jar
+----
+
+If you look at the output, you will find messages like the following:
+
+----
+INFO - REST Application: http://localhost:4040/speaker               -> io.microprofile.showcase.speaker.rest.Application@68cda174
+INFO - Service URI: http://localhost:4040/speaker/              -> Pojo io.microprofile.showcase.speaker.rest.ResourceSpeaker
+INFO - DELETE http://localhost:4040/speaker/remove/{id}   ->      void remove(String)
+----
+
+There you can see the URLs of the endpoints exposed by TomEE for your application.
+
+To verify that everything worked fine, you can try to access http://localhost:4040/speaker
+
+== Description
+
+Microservice Speaker is the http://www.tomitribe.com contributed service to the MicroProfile.
+
+This service provides a list of speakers, currently featured speakers for JavaOne 2016.
+
+The endpoints are:
+
+----
+/speaker //<1>
+/speaker/add //<2>
+/speaker/remove/{id} //<3>
+/speaker/update //<4>
+/speaker/retrieve/{id} //<5>
+/speaker/search //<6>
+----
+
+<1> List all
+<2> Add a Speaker
+<3> Remove a Speaker by id
+<4> Update an existing Speaker
+<5> Retrieve a known speaker
+<6> Search for a speaker
+
+[source,json]
+----
+{
+  "id" : "UUID",
+  "nameFirst" : "John",
+  "nameLast" : "Doe",
+  "organization" : "Pearly gates",
+  "biography" : "A nobody",
+  "picture" : "http://link/to/some.jpg",
+  "twitterHandle" : "@JohnDoe"
+}
+----
+
+=== Running on Liberty
+
+Alternatively you can run this service on liberty by doing:
+
+```
+cd microservice-speaker
+mvn -Pliberty package
+java -jar target/microservice-speaker-liberty.jar
+```
+
